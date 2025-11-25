@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenario>
+	<precondition>
+		<item>
+			<seq>1</seq>
+			<type>ECHO</type>
+			<value>Start Scenario</value>
+			<desc>출력</desc>
+		</item>
+		<item>
+			<seq>2</seq>
+			<type>SLEEP</type>
+			<value>3</value>
+			<desc>SLEEP (초)</desc>
+		</item>
+		<item>
+			<seq>3</seq>
+			<type>RUN</type>
+			<value>ls -al</value>
+			<desc>실행 테스트</desc>
+		</item>
+	</precondition>
+	<test>
+		<item>
+			<seq>1</seq>
+			<type>GREP</type>
+			<value>/etc/hosts</value>
+			<param1>localhost</param1>
+			<desc>grep test</desc>
+		</item>
+		<item>
+			<seq>2</seq>
+			<type>SLEEP</type>
+			<value>3</value>
+			<desc>SLEEP (초)</desc>
+		</item>
+		<item>
+			<seq>3</seq>
+			<type>RUN</type>
+			<value>ls -al</value>
+			<desc>실행 테스트</desc>
+		</item>
+	</test>
+</scenario>

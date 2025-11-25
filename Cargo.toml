@@ -1,0 +1,7 @@
+[package]
+name = "bug-free-scenario-tree"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+xml = "1.0"
