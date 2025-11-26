@@ -1,4 +1,4 @@
-use std::fs::File;
+use std::{fs::File};
 use std::io::BufReader;
 
 use xml::reader::{EventReader, XmlEvent};
@@ -13,8 +13,24 @@ fn config() -> std::io::Result<()> {
     let file = BufReader::new(file);
 	let parser = EventReader::new(file);
 	
+	let mut depth = 0;
+
 	for event in parser {
-		println!("{:?}", event.unwrap());
+		match event {
+			Ok(XmlEvent::StartElement { name, .. }) => {
+				println!("{:spaces$}+{name}", "", spaces = depth * 2);
+				depth += 1;
+			}
+			Ok(XmlEvent::EndElement { name }) => {
+				depth -= 1;
+				println!("{:spaces$}-{name}", "", spaces = depth * 2);
+			}
+			Err(event) => {
+				eprintln!("Error: {event}");
+                break;
+			}
+			_ => {}
+		}
 	}
 
 	Ok(())
